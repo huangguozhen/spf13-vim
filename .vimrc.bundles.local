@@ -1,0 +1,2 @@
+UnBundle 'spf13/vim-colors'
+Bundle 'tmux-plugins/vim-tmux'
