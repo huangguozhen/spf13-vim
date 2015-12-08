@@ -1,0 +1,41 @@
+set nospell
+set nofoldenable
+
+if exists('$TMUX')
+    set term=screen-256color
+
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="normal"
+    colors solarized
+else
+    let g:molokai_original=1
+    let g:rehash256=1
+    colors molokai
+endif
+
+
+" javascript {
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_javascript_checkers = ['jshint']
+    let g:syntastic_jshint_exec = '/home/zhen/.nvm/versions/node/v0.12.7/bin/jshint'
+" }
+
+"if exists('$ITERM_PROFILE')
+    "if exists('$TMUX')
+        "let &amp;t_SI = "<Esc>[3 q"
+        "let &amp;t_EI = "<Esc>[0 q"
+    "else
+        "let &amp;t_SI = "<Esc>]50;CursorShape=1x7"
+        "let &amp;t_EI = "<Esc>]50;CursorShape=0x7"
+    "endif
+"endif
+
+inoremap jk <ESC>
+inoremap <ESC> <nop>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>ns :set nospell<CR>
+nnoremap <leader>bn :bn<CR>
+
+noremap <leader>stw :call StripTrailingWhitespace()<CR>
