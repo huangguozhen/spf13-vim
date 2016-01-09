@@ -1,25 +1,39 @@
 set nospell
 set nofoldenable
+set mouse=c
 
-if exists('$TMUX')
-    set term=screen-256color
+" tmux {
+    "if exists('$TMUX')
+        set term=screen-256color
 
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
-    colors solarized
-else
-    let g:molokai_original=1
-    let g:rehash256=1
-    colors molokai
-endif
+        "let g:solarized_termtrans=1
+        "let g:solarized_contrast="normal"
+        "let g:solarized_visibility="normal"
+        "colors solarized
+    "else
+        let g:molokai_original=1
+        let g:rehash256=1
+        colors molokai
+    "endif
+" }
 
-" javascript {
+" eslint {
     "let g:syntastic_check_on_open = 1
     "let g:syntastic_javascript_checkers = ['jshint']
     "let g:syntastic_javascript_jshint_exec = '/home/zhen/.nvm/versions/node/v0.12.7/bin/jshint'
     let g:jsx_ext_required = 0
     let g:syntastic_javascript_checkers = ['eslint']
+
+    " I wish eslint would just check for a locally installed eslint on its
+    " own, but works great for vim.
+    let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+    if matchstr(local_eslint, "^\/\\w") == ''
+        let local_eslint = getcwd() . "/" . local_eslint
+    endif
+
+    if executable(local_eslint)
+        let g:syntastic_javascript_eslint_exec = local_eslint
+    endif
 " }
 
 "if exists('$ITERM_PROFILE')

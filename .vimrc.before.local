@@ -1,4 +1,5 @@
 let g:spf13_bundle_groups=['general', 'writing', 'programming',  'misc', 'youcompleteme', 'javascript', 'html', 'python', 'ruby']
+let g:spf13_no_autochdir=1
 
 let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts=1
